@@ -11,7 +11,7 @@ export default function App() {
 
     <GlobalStyle/>
     <MainPage></MainPage>
-    <MovieTime/>
+    
     </StyleContainer>
   
     </>)

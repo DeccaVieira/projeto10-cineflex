@@ -7,7 +7,7 @@ import axios from "axios"
 
 export default function MainPage() {
 const [images, setImages] = useState([])
-
+useEffect(() => {
     const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies"
     const promise = axios.get(URL)
 
@@ -19,7 +19,7 @@ setImages(res.data)
     promise.catch((err) =>
     console(err.response.data))
 
-
+}, [])
     return (
 
 <StyleMainScreen>
