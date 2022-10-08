@@ -1,20 +1,14 @@
-import react from "react"
 import styled from "styled-components"
-
-
-
-
 
  export default function Movies({img}) {
     return (
 <>
    <StyleMovies>
-<img src={img.posterURL} alt="teste"/>
+<img src={img.posterURL} alt={img.title}/>
    </StyleMovies>
 
 </>)
  }
-
          const StyleMovies = styled.section `
          width: 145px;
          height: 209px;
