@@ -1,12 +1,13 @@
 import styled from "styled-components"
 import { useEffect , useState } from "react"
-
-
 import Movies from "./Movies"
 import axios from "axios"
 
+
 export default function MainPage() {
-  
+
+
+
 const [images, setImages] = useState([])
 useEffect(() => {
     const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies"
@@ -28,7 +29,9 @@ if(images.length === 0){
     return (<>
 <StyleOption><h2>Selecione o filme</h2></StyleOption>
 <StyleMainScreen>
+  
 {images.map((img) => <Movies key={img.id} img={img}/>)}
+
 </StyleMainScreen>
 </>
     )
@@ -40,7 +43,7 @@ width: 375px;
 background-color: #FFFFFF;
 display:flex;
 flex-wrap:wrap;
-justify-content: space-around;
+justify-content: space-between;
 overflow-y:scroll;
 `
 const StyleOption = styled.section `

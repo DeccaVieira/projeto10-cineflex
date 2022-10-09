@@ -2,10 +2,13 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 import Seats from "./Seats"
+import { useParams } from "react-router-dom"
+
 export default function MovieSeats() {
-const [seat, setSeat] = useState([])
+const [seat, setSeat] = useState({})
+const {sessionID} = useParams()
 useEffect(() =>{ 
-const URL = "https://mock-api.driven.com.br/api/v5/cineflex/showtimes/97/seats"
+const URL = "https://mock-api.driven.com.br/api/v5/cineflex/showtimes/99/seats"
 const promise = axios.get(URL)
 
 promise.then((res)=> {
@@ -19,6 +22,11 @@ setSeat(res.data.seats)
 <StyleContainerSeats>
 {seat.map((seat)=> <Seats key={seat.id} seat={seat} setSeat={setSeat}/>)}
 </StyleContainerSeats>
+<ContainerStatus>
+<StyleContainerStatus><StyleStatusS/> Selecionado</StyleContainerStatus>
+<StyleContainerStatus><StyleStatusAvailable/>Disponível</StyleContainerStatus>
+<StyleContainerStatus><StyleStatusU/>Indisponível</StyleContainerStatus>
+</ContainerStatus>
     </>)
 }
 const StyleOption = styled.section `
@@ -47,4 +55,35 @@ flex-wrap:wrap;
 justify-content:space-between;
 align-items:center;
 padding:24px;
+`
+const StyleStatusAvailable = styled.li`
+width:24px;
+height:24px;
+background-color:#C3CFD9;
+border-radius:50%;
+`
+const StyleStatusS = styled(StyleStatusAvailable)`
+background-color: #8DD7CF;
+`
+const StyleStatusU = styled(StyleStatusAvailable)`
+background-color:#FBE192;
+`
+const StyleContainerStatus = styled.ul`
+height:53px;
+width: 91px;
+display:flex:
+justify-content: center;
+align-items:center;
+flex-direction:column;
+`
+const ContainerStatus = styled.div`
+width:344px;
+display:flex;
+flex-direction: row;
+justify-content: space-between;
+padding:24px;
+li {
+    display:flex;
+    justify-content:center;
+}
 `

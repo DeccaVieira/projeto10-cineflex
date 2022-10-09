@@ -3,18 +3,22 @@ import axios from "axios"
 import styled from "styled-components"
 import Schedule from "./Schedule"
 import FooterMovie from "./FooterMovie"
+import { useParams } from "react-router-dom"
 
 export default function MovieTime() {
+   
 const [schedules, setSchedules] = useState([])
-const [movie, setMovie] = useState([])
-
-const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies/2/showtimes"
-const promise = axios.get(URL);
+const [movie, setMovie] = useState({})
+const {movieId} = useParams()
+console.log(movieId, "te")
 useEffect(()=>{
+
+const URL = (`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`)
+const promise = axios.get(URL);
 promise.then((res) => {
-console.log(res.data.days)
+
 setSchedules(res.data.days)
-console.log(res.data.title)
+console.log(res.data)
 setMovie(res.data)
 })
 
