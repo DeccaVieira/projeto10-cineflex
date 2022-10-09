@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export default function Schedule(props) {
   const {schedules , setSchedules} = props
+  
    console.log(props.schedules.id) 
    console.log(props.schedules.showtimes[1].id)  
     return (<>

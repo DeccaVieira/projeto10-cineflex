@@ -6,6 +6,7 @@ import FooterMovie from "./FooterMovie"
 
 export default function MovieTime() {
 const [schedules, setSchedules] = useState([])
+const [movie, setMovie] = useState([])
 
 const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies/2/showtimes"
 const promise = axios.get(URL);
@@ -13,7 +14,8 @@ useEffect(()=>{
 promise.then((res) => {
 console.log(res.data.days)
 setSchedules(res.data.days)
-
+console.log(res.data.title)
+setMovie(res.data)
 })
 
 promise.catch((err) => {
@@ -27,7 +29,7 @@ console.log(err.response.data)})
     <StyleMovieTime>
 {schedules.map((schedules) =><Schedule key={schedules.id} schedules={schedules} setSchedules={setSchedules}/> )}     
     </StyleMovieTime>
- {schedules.map((res) => <FooterMovie key={schedules.id} schedules={schedules} setSchedules={setSchedules}/>)}
+<FooterMovie movie={movie} setMovie={setMovie}/>
     </>)
 }
 const StyleOption = styled.section `
