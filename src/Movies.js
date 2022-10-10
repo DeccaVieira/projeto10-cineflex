@@ -1,19 +1,19 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
- export default function Movies({img}) {
+export default function Movies({ img }) {
 
 
-    return (
-<>
-   <StyleMovies>
-      <Link to={`/sessoes/${img.id}`}>
-<img src={img.posterURL} alt={img.title}/>
-</Link>
-   </StyleMovies>
+   return (
+      <>
+         <StyleMovies>
+            <Link to={`/sessoes/${img.id}`}>
+               <img src={img.posterURL} alt={img.title} />
+            </Link>
+         </StyleMovies>
 
-</>)
- }
-         const StyleMovies = styled.section `
+      </>)
+}
+const StyleMovies = styled.section`
          width: 145px;
          height: 209px;
          background-color: #ffffff;

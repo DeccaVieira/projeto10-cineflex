@@ -5,31 +5,36 @@ import Seats from "./Seats"
 import { useParams } from "react-router-dom"
 
 export default function MovieSeats() {
-const [seat, setSeat] = useState({})
-const {sessionID} = useParams()
-useEffect(() =>{ 
-const URL = "https://mock-api.driven.com.br/api/v5/cineflex/showtimes/99/seats"
-const promise = axios.get(URL)
+    const [seat, setSeat] = useState([])
+    const { idSessao } = useParams()
 
-promise.then((res)=> {
-console.log(res.data.seats)
-setSeat(res.data.seats)
 
-})
-}, [])
+    useEffect(() => {
+
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/4/seats`)
+
+
+        promise.then((res) => {
+            console.log(res.data, "teste2")
+            setSeat(res.data.seats)
+        })
+
+        promise.catch((err) =>
+            console.log(err.response.data))
+    }, [])
     return (<>
-    <StyleOption><h2>Selecione o(s) assento(s)</h2></StyleOption>
-<StyleContainerSeats>
-{seat.map((seat)=> <Seats key={seat.id} seat={seat} setSeat={setSeat}/>)}
-</StyleContainerSeats>
-<ContainerStatus>
-<StyleContainerStatus><StyleStatusS/> Selecionado</StyleContainerStatus>
-<StyleContainerStatus><StyleStatusAvailable/>Disponível</StyleContainerStatus>
-<StyleContainerStatus><StyleStatusU/>Indisponível</StyleContainerStatus>
-</ContainerStatus>
+        <StyleOption><h2>Selecione o(s) assento(s)</h2></StyleOption>
+        <StyleContainerSeats>
+            {seat.map((seat) => <Seats key={seat.id} seat={seat} setSeat={setSeat} />)}
+        </StyleContainerSeats>
+        <ContainerStatus>
+            <StyleContainerStatus><StyleStatusS /> Selecionado</StyleContainerStatus>
+            <StyleContainerStatus><StyleStatusAvailable />Disponível</StyleContainerStatus>
+            <StyleContainerStatus><StyleStatusU />Indisponível</StyleContainerStatus>
+        </ContainerStatus>
     </>)
 }
-const StyleOption = styled.section `
+const StyleOption = styled.section`
 width:374px;
 height:80px;
 display:flex;

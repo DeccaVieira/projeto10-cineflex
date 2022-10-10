@@ -1,23 +1,23 @@
 import styled from "styled-components"
 
 export default function FooterMovie(props, prop) {
-    const {schedules , setSchedules, movie , setMovie} = props
-console.log(props.movie)
+    const { schedules, setSchedules, movie, setMovie } = props
 
-    
-    return(<>
-    <StyleFooterMovie>
-        <StyleImage>
-            <img src={props.movie.posterURL}/>        </StyleImage>
-<h2>{props.movie.title}</h2>
-    </StyleFooterMovie>
+
+
+    return (<>
+        <StyleFooterMovie>
+            <StyleImage>
+                <img src={props.movie.posterURL} />        </StyleImage>
+            <h2>{props.movie.title}</h2>
+        </StyleFooterMovie>
     </>)
 }
 const StyleFooterMovie = styled.section` 
 width:375px;
 heigth:117px;
 background-color: #DFE6ED;
-top:760px;
+top:610px;
 display:flex;
 align-items:center;
 flex-direction: row;

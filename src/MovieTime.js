@@ -1,4 +1,4 @@
-import { useEffect , useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import styled from "styled-components"
 import Schedule from "./Schedule"
@@ -6,37 +6,40 @@ import FooterMovie from "./FooterMovie"
 import { useParams } from "react-router-dom"
 
 export default function MovieTime() {
-   
-const [schedules, setSchedules] = useState([])
-const [movie, setMovie] = useState({})
-const {movieId} = useParams()
-console.log(movieId, "te")
-useEffect(()=>{
+    const [idMovie, setIdMovie] = useState({})
+    const [schedules, setSchedules] = useState([])
+    const [movie, setMovie] = useState({})
+    const { movieId } = useParams()
+console.log(movieId)
 
-const URL = (`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`)
-const promise = axios.get(URL);
-promise.then((res) => {
+    useEffect(() => {
 
-setSchedules(res.data.days)
-console.log(res.data)
-setMovie(res.data)
-})
+        const URL = (`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`)
+        const promise = axios.get(URL);
+        promise.then((res) => {
 
-promise.catch((err) => {
-console.log(err.response.data)})
+            setSchedules(res.data.days)
+            setMovie(res.data)
+            setIdMovie(res.data.id)
 
-},[])
+        })
+
+        promise.catch((err) => {
+            console.log(err.response.data)
+        })
+
+    }, [])
 
     return (<>
 
-   <StyleOption><h2>Selecione o horário</h2></StyleOption>
-    <StyleMovieTime>
-{schedules.map((schedules) =><Schedule key={schedules.id} schedules={schedules} setSchedules={setSchedules}/> )}     
-    </StyleMovieTime>
-<FooterMovie movie={movie} setMovie={setMovie}/>
+        <StyleOption><h2>Selecione o horário</h2></StyleOption>
+        <StyleMovieTime>
+            {schedules.map((schedules) => <Schedule key={schedules.id} schedules={schedules} setSchedules={setSchedules} idMovie={idMovie} setIdMovie={setIdMovie} />)}
+        </StyleMovieTime>
+        <FooterMovie movie={movie} setMovie={setMovie} />
     </>)
 }
-const StyleOption = styled.section `
+const StyleOption = styled.section`
 width:374px;
 height:110px;
 display:flex;

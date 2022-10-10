@@ -1,19 +1,22 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export default function Schedule(props) {
-  const {schedules , setSchedules} = props
-  
-  console.log(props.schedules.showtimes[0].id) 
-   console.log(props.schedules.showtimes[1].id)  
+    const { schedules, setSchedules} = props
+console.log(props.schedules.showtimes[0].id)
+
+
     return (<>
         <StyleDateTime>
             <h3>{props.schedules.weekday} - {props.schedules.date}</h3>
-             
+
         </StyleDateTime>
         <StyleContainerButton>
-        <StyleButtonTime><h2>{props.schedules.showtimes[0].name}</h2></StyleButtonTime>
-        <StyleButtonTime><h2>{props.schedules.showtimes[1].name}</h2></StyleButtonTime>
-        </StyleContainerButton>           
+         
+                <StyleButtonTime><h2>{props.schedules.showtimes[0].name}</h2></StyleButtonTime>
+                <StyleButtonTime><h2>{props.schedules.showtimes[1].name}</h2></StyleButtonTime>
+          
+        </StyleContainerButton>
     </>
     )
 

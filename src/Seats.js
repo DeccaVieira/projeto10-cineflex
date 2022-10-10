@@ -1,13 +1,15 @@
 import styled from "styled-components"
-
-export default function Seat(props) {
+import { Link } from "react-router-dom"
+export default function Seats(props) {
 const {seat, setSeat} = props
 console.log(props.seat.isAvailable)
 
     return(<>
+    <Link to={seat.id}>
     {props.seat.isAvailable === true ?
     <StyleStatusAvailable>{props.seat.name}</StyleStatusAvailable> :
     <StyleStatusUnavailable>{props.seat.name}</StyleStatusUnavailable>}
+    </Link>
     </>)
 }
 const StyleStatusAvailable = styled.li`
@@ -28,6 +30,7 @@ h2 {
     letter-spacing: 0.04em; 
     color:#000000;    
 }
+
 `
 const StyleSelected = styled(StyleStatusAvailable)`
 background-color: #8DD7CF;

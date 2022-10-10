@@ -1,14 +1,14 @@
 import styled from "styled-components"
 export default function Header() {
-    
-    return (<>
-<StyleLogo><h1>CINEFLEX</h1></StyleLogo>
 
-</>
+    return (<>
+        <StyleLogo><h1>CINEFLEX</h1></StyleLogo>
+
+    </>
     )
 }
 
-const StyleLogo = styled.header `
+const StyleLogo = styled.header`
 width: 375px;
 height:67px;
 background-color: #C3CFD9;
