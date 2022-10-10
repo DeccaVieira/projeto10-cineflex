@@ -4,11 +4,11 @@ import Movies from "./Movies"
 import axios from "axios"
 
 
-export default function MainPage() {
+export default function MainPage(props) {
+    const {images, setImages} = props
 
 
-
-    const [images, setImages] = useState([])
+    
     useEffect(() => {
         const URL = "https://mock-api.driven.com.br/api/v5/cineflex/movies"
         const promise = axios.get(URL)
@@ -38,12 +38,12 @@ export default function MainPage() {
 
 }
 const StyleMainScreen = styled.main`
-height:700px;
+height:810px;
 width: 375px;
 background-color: #FFFFFF;
 display:flex;
 flex-wrap:wrap;
-justify-content: space-between;
+justify-content: space-around;
 overflow-y:scroll;
 `
 const StyleOption = styled.section`

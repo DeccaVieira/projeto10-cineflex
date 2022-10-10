@@ -1,15 +1,34 @@
 import styled from "styled-components"
-import { Link } from "react-router-dom"
-export default function Seats(props) {
-const {seat, setSeat} = props
-console.log(props.seat.isAvailable)
 
-    return(<>
-    <Link to={seat.id}>
-    {props.seat.isAvailable === true ?
-    <StyleStatusAvailable>{props.seat.name}</StyleStatusAvailable> :
-    <StyleStatusUnavailable>{props.seat.name}</StyleStatusUnavailable>}
-    </Link>
+export default function Seats(props) {
+   
+    const { seat, seatsArray, setSeatsArray , name, cpf} = props;
+
+
+    function handleSelection() {
+        const selection = [];
+        for (let i = 0; i < seatsArray.length; i++) {
+            if (seatsArray[i] === seat) {
+                selection.push({
+                    ...seatsArray[i],
+                    isSelected: !seatsArray[i].isSelected
+                });
+            } else {
+                selection.push({ ...seatsArray[i] });
+            }
+        }
+        setSeatsArray(selection);
+        
+    }
+    function alertSeat(e){
+return alert("Esse assento não está disponível")
+    }
+    return (<>
+
+        {props.seat.isAvailable === true ?
+            <StyleStatusAvailable onClick={handleSelection}>{props.seat.name}</StyleStatusAvailable> :
+            <StyleStatusUnavailable onClick={alertSeat}>{props.seat.name}</StyleStatusUnavailable>}
+
     </>)
 }
 const StyleStatusAvailable = styled.li`

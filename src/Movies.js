@@ -7,7 +7,7 @@ export default function Movies({ img }) {
       <>
          <StyleMovies>
             <Link to={`/sessoes/${img.id}`}>
-               <img src={img.posterURL} alt={img.title} />
+               <img data-identifier="movie-outdoor" src={img.posterURL} alt={img.title} />
             </Link>
          </StyleMovies>
 

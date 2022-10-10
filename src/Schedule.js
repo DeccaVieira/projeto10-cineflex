@@ -2,20 +2,23 @@ import styled from "styled-components"
 import { Link } from "react-router-dom"
 
 export default function Schedule(props) {
-    const { schedules, setSchedules} = props
-console.log(props.schedules.showtimes[0].id)
+    const { schedules, setSchedules } = props
+    console.log(props.schedules.showtimes[0].id)
 
 
     return (<>
-        <StyleDateTime>
-            <h3>{props.schedules.weekday} - {props.schedules.date}</h3>
+        <StyleDateTime data-identifier="session-date">
+            <h3 >{props.schedules.weekday} - {props.schedules.date}</h3>
 
         </StyleDateTime>
         <StyleContainerButton>
-         
-                <StyleButtonTime><h2>{props.schedules.showtimes[0].name}</h2></StyleButtonTime>
-                <StyleButtonTime><h2>{props.schedules.showtimes[1].name}</h2></StyleButtonTime>
-          
+            {props.schedules.showtimes.map((showtime) => (
+                <Link to={`/assentos/${showtime.id}`}>
+                    <StyleButtonTime data-identifier="hour-minute-btn" >
+                        <h2>{showtime.name}</h2>
+                    </StyleButtonTime>
+                </Link>
+            ))}
         </StyleContainerButton>
     </>
     )
@@ -40,9 +43,8 @@ color: #293845
 const StyleButtonTime = styled.button`
 width:82px;
 height: 43px;
-margin-right: 9px;
-margin-top:22px;
-margin-bottom:23px;
+margin: 22px 8px;
+
 background-color: #E8833A;
 border:none;
 border-radius:3px;

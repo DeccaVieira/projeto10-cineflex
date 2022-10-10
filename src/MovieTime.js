@@ -5,9 +5,9 @@ import Schedule from "./Schedule"
 import FooterMovie from "./FooterMovie"
 import { useParams } from "react-router-dom"
 
-export default function MovieTime() {
+export default function MovieTime(props) {
     const [idMovie, setIdMovie] = useState({})
-    const [schedules, setSchedules] = useState([])
+    const {schedules, setSchedules} = props
     const [movie, setMovie] = useState({})
     const { movieId } = useParams()
 console.log(movieId)
@@ -42,10 +42,12 @@ console.log(movieId)
 const StyleOption = styled.section`
 width:374px;
 height:110px;
+margin-top:67px;
 display:flex;
 justify-content:center;
 align-items:center;
 color:#E8833A;
+
 h2 {
     font-family: Roboto;
 font-size: 24px;
@@ -59,8 +61,9 @@ color: #293845;
 `
 
 const StyleMovieTime = styled.main`
-height:700px;
+height:810px;
 width: 375px;
+margin-bottom: 117px;
 background-color: #ffffff;
 display:flex;
 flex-direction:column;

@@ -8,7 +8,7 @@ export default function FooterMovie(props, prop) {
     return (<>
         <StyleFooterMovie>
             <StyleImage>
-                <img src={props.movie.posterURL} />        </StyleImage>
+                <img data-identifier="movie-img-preview" src={props.movie.posterURL} />        </StyleImage>
             <h2>{props.movie.title}</h2>
         </StyleFooterMovie>
     </>)
@@ -17,11 +17,12 @@ const StyleFooterMovie = styled.section`
 width:375px;
 heigth:117px;
 background-color: #DFE6ED;
-top:610px;
 display:flex;
 align-items:center;
 flex-direction: row;
 position:fixed;
+bottom:0 ;
+left:0;
 h2 {
     font-family: Roboto;
 font-size: 26px;

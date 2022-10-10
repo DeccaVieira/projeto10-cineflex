@@ -15,6 +15,9 @@ background-color: #C3CFD9;
 display:flex;
 align-items: center;
 justify-content:center;
+position:fixed;
+top:0;
+left:0;
 h1{
     font-family: Roboto;
 font-size: 34px;
