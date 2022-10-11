@@ -18,16 +18,18 @@ export default function Seats(props) {
             }
         }
         setSeatsArray(selection);
-        
+        console.log(setSeatsArray[0], "teste")
     }
     function alertSeat(e){
 return alert("Esse assento não está disponível")
     }
     return (<>
 
-        {props.seat.isAvailable === true ?
-            <StyleStatusAvailable onClick={handleSelection}>{props.seat.name}</StyleStatusAvailable> :
-            <StyleStatusUnavailable onClick={alertSeat}>{props.seat.name}</StyleStatusUnavailable>}
+        {props.seat.isSelected === true
+? <StyleSelected onClick={handleSelection}>{props.seat.name}</StyleSelected> 
+        : props.seat.isAvailable === true 
+            ? <StyleStatusAvailable onClick={handleSelection}>{props.seat.name}</StyleStatusAvailable> 
+           : <StyleStatusUnavailable onClick={alertSeat}>{props.seat.name}</StyleStatusUnavailable>}
 
     </>)
 }
