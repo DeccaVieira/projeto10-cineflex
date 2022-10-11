@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 export default function End(props) {
@@ -19,16 +20,22 @@ export default function End(props) {
             <h3>{name}</h3>
             <h3>{cpf}</h3>
         </StyleSummary>
+        <StyleButton>
+            <Link to ="/">
+            <button><h2>Voltar pra Home</h2></button>
+            </Link></StyleButton>
     </>)
 }
 const StyleOption = styled.section`
-width:374px;
+width:190px;
 height:110px;
 display:flex;
 justify-content:center;
 align-items:center;
 color:#E8833A;
-margin-left:28px;
+margin-left:84px;
+margin-top: 67px;
+flex-wrap:wrap;
 h2 {
     font-family: Roboto;
 font-size: 24px;
@@ -63,12 +70,14 @@ text-align: left;
 
 }
 `
-const StyleButton = styled.button`
+const StyleButton = styled.div`
 button{
 width:225px;
 height:42px;
 background-color:#E8833A;
 margin-left:28px;
+border:none;
+border-radius: 3px;
 }
 h2{
     color:#ffffff;
