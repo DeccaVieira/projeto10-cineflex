@@ -39,7 +39,7 @@ flex-wrap:wrap;
 h2 {
     font-family: Roboto;
 font-size: 24px;
-font-weight: 400;
+font-weight: 700;
 line-height: 28px;
 letter-spacing: 0.04em;
 text-align: center;

@@ -61,12 +61,15 @@ console.log(seatsArray)
     </>)
 }
 const StyleOption = styled.section`
-width:374px;
-height:80px;
+width:375px;
+height:110px;
 display:flex;
 justify-content:center;
 align-items:center;
 color:#E8833A;
+margin-left:3px;
+margin-top: 67px;
+positon: absolute;
 h2 {
     font-family: Roboto;
 font-size: 24px;
@@ -131,7 +134,7 @@ const StyleInput = styled.div`
 input{
 width:327px;
 height: 51px;
-border-color:#D4D4D4;
+border-color:lightgray;
 margin:5px;
 }
 `
@@ -142,7 +145,8 @@ button{
 width:225px;
 height:42px;
 background-color:#E8833A;
-border:none;
+border-radius:3px;
+border: none;
 decoration:none;
 }
 h2{
